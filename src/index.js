@@ -8,15 +8,14 @@ import { BrowserRouter} from 'react-router-dom';
 import { App } from 'components/App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  
-  <Provider store={store}>
   <React.StrictMode>
+  <Provider store={store}>
   <BrowserRouter 
-  // basename="goit-react-hw-08-phonebook"
+  basename="goit-react-hw-08-phonebook"
   >
     <App />
     </BrowserRouter>
-  </React.StrictMode>
  </Provider>
+ </React.StrictMode>
  
 );
