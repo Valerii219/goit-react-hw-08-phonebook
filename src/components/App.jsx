@@ -1,23 +1,26 @@
-import { useSelector } from "react-redux";
-import ContactForm from "./ContactForm/ContactForm";
-import Filter from "./Filter/Filter";
-import ContactList from "./ListContact/ContatcList";
-import Loading from "./Loading/Loading";
-import { filterSelector } from "store/filterSlice/selectors";
-import { contactsSelector } from "store/contactsSlice/selectors";
+import { Route, Routes } from "react-router";
+import ContactFormik from "pages/ContactFormik";
 
+import Layout from "Layout/Layout";
+import Home from "pages/Home";
+import Login from "pages/Login";
+import SignUp from "pages/SignUp";
+import PublicGuards from "Guard/PublicGuard";
 
 export const App = () => {
-  const filter = useSelector(filterSelector);
-  const {isLoading} = useSelector(contactsSelector);
+ 
   return (
-    <div style={{ padding: "35px" }}>
-      <h2>Phonebook</h2>
-      <ContactForm  />
-      <h2>Contacts</h2>
-       {isLoading && <Loading/>}
-      { filter && <ContactList />}
-      <Filter />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout/>}>
+        <Route index element={<Home/>}/>
+        <Route path="contacts" element={<ContactFormik/>}/>
+      </Route>
+
+      <Route path="/register" element={<PublicGuards><SignUp/></PublicGuards>}/>
+        <Route path="/login" element={<PublicGuards><Login/></PublicGuards>}/>
+      
+    </Routes>
+
   );
+
 };
