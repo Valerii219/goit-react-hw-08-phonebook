@@ -15,7 +15,6 @@ export const App = () => {
         <Route index element={<Home/>}/>
         <Route path="contacts" element={<ContactFormik/>}/>
       </Route>
-
       <Route path="/register" element={<PublicGuards><SignUp/></PublicGuards>}/>
         <Route path="/login" element={<PublicGuards><Login/></PublicGuards>}/>
       
