@@ -1,19 +1,17 @@
-import { Route, Routes } from "react-router";
 
 import Layout from "Layout/Layout";
-
-
 import Home from "Pages/Home";
 import PublicGuards from "Guard/PublicGuard";
 import SignUp from "Pages/SignUp";
 import Login from "Pages/Login";
-// import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ContactFormik from "Pages/ContactFormik";
+import { Route, Routes } from "react-router";
 
 export const App = () => {
  
   return (
-    
+    <div><ToastContainer autoClose={2300}/>
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route index element={<Home/>}/>
@@ -23,11 +21,8 @@ export const App = () => {
       </Route>
     </Routes>
 
-    
+    </div>
     
   );
 
 };
-
-// {/* <div><ToastContainer autoClose={2300}/>
-// </div> */}
