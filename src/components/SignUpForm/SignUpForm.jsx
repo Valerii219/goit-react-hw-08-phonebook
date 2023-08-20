@@ -46,22 +46,22 @@ const SignUpForm = ({ signUp }) => {
   return (
     <div>
       <form className={css.form} onSubmit={handleSubmit}>
-        <FormControl color={isNameValid ? 'success' : 'error'}>
-          <InputLabel>Name</InputLabel>
-          <Input id="my-input" aria-describedby="my-helper-text" type="text" name="name" onChange={handleChangeName} value={name} required />
+        <FormControl sx={{ mt: 2 }} color={isNameValid ? 'success' : 'error'}>
+          <InputLabel size='small'>Name</InputLabel>
+          <Input id="my-input" aria-describedby="my-helper-text"  type="text" name="name" onChange={handleChangeName} value={name} required />
         </FormControl>
 
-        <FormControl color={isEmailValid ? 'success' : 'error'}>
+        <FormControl sx={{ mt: 2 }} color={isEmailValid ? 'success' : 'error'}>
           <InputLabel>Email address</InputLabel>
           <Input id="my-name" aria-describedby="my-helper-text" type="email" name="email" onChange={handleChangeEmail} value={email}  required />
         </FormControl>
 
-        <FormControl color={isPasswordValid ? 'success' : 'error'}>
+        <FormControl  sx={{ mt: 2 }} color={isPasswordValid ? 'success' : 'error'}>
           <InputLabel>Password</InputLabel>
           <Input id="my-password" aria-describedby="my-helper-text" type="password" name="password" onChange={handleChangePassword} value={password} required />
         </FormControl>
 
-        <Button color="success" type="submit">Submit</Button>
+        <Button sx={{ mt: 2 }} color="success" type="submit">Submit</Button>
       </form>
     </div>
   );
