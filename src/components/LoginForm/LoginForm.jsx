@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import css from './LoginForm.module.css'
+import { Button, TextField } from '@mui/material'
 const LoginForm = ({login}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -21,19 +22,27 @@ const LoginForm = ({login}) => {
 
   return (<div >
     <form className={css.form} onSubmit={handleSubmit}>
-       <label >Email</label>
-  <input
+ <TextField
+  label="Email"
+  variant="filled"
+  id='email'
   type="text"
-  name="email"
+  color="secondary"
   onChange={handleChangeEmail}
-  value={email}
+value={email}
+  focused
 />
-<label >Password</label>
-<input type="password"
-name="password"
-onChange={handleChangePassword}
-value={password}></input>
-<button type='submit'  >submit</button>
+<TextField
+  label="Password"
+  variant="filled"
+  id='password'
+  type="password"
+  color="secondary"
+  onChange={handleChangePassword}
+value={password}
+  focused
+/>
+<Button variant="contained" color="success" type='submit'  >submit</Button>
     </form>
     </div>
   )

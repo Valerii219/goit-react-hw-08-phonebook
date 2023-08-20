@@ -1,29 +1,24 @@
 .header{
-width: 100%;
+width: 50%;
 background-color: rgb(36, 21, 148);
 padding-top: 24px;
 padding-bottom: 24px;
 border-bottom: solid 2px black ;
 border-radius: 0 0 4px 4px;
+margin-left: auto;
+margin-right: auto;
+display: flex;
+}
+.login{
+  display: block;
+  margin-left: auto;
+  margin-right: 20px;
+  border-radius: 50%;
 }
 
 .home{
-margin-right: 20px;
-margin-left: 50px;
-text-decoration: none;
-font-weight: 700;
-  font-size: 36px;
-  line-height: 1.11;
-  letter-spacing: 0.02em;
-text-transform: capitalize;
-color:rgb(26, 255, 0);
+  margin-left: 20px;
 }
-.movies{
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 1.11;
-    letter-spacing: 0.02em;
-  text-transform: capitalize;
-  color:rgb(26, 255, 0);
+.img{
+  border-radius: 50%;
 }

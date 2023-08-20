@@ -14,9 +14,10 @@ export const App = () => {
       <Route path="/" element={<Layout/>}>
         <Route index element={<Home/>}/>
         <Route path="contacts" element={<ContactFormik/>}/>
+        <Route path="register" element={<PublicGuards><SignUp/></PublicGuards>}/>
+        <Route path="login" element={<PublicGuards><Login/></PublicGuards>}/>
       </Route>
-      <Route path="/register" element={<PublicGuards><SignUp/></PublicGuards>}/>
-        <Route path="/login" element={<PublicGuards><Login/></PublicGuards>}/>
+      
       
     </Routes>
 
