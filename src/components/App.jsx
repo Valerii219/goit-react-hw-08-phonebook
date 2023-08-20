@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import ContactFormik from "Pages/ContactFormik";
+
 
 import Layout from "Layout/Layout";
 import Home from "Pages/Home";
@@ -7,6 +7,7 @@ import Login from "Pages/Login";
 import SignUp from "Pages/SignUp";
 import PublicGuards from "Guard/PublicGuard";
 import { ToastContainer } from "react-toastify";
+import ContactFormik from "Pages/ContactFormik";
 
 export const App = () => {
  
