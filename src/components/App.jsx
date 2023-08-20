@@ -1,12 +1,13 @@
 
-import Layout from "Layout/Layout";
-import Home from "Pages/Home";
-import PublicGuards from "Guard/PublicGuard";
-import SignUp from "Pages/SignUp";
-import Login from "Pages/Login";
+import Layout from "../Layout/Layout";
+import Home from "../Pages/Home";
+import PublicGuards from "../Guard/PublicGuard";
+import SignUp from "../Pages/SignUp";
+import Login from "../Pages/Login";
 import { ToastContainer } from "react-toastify";
-import ContactFormik from "Pages/ContactFormik";
+
 import { Route, Routes } from "react-router";
+import ContactFormik from "../Pages/ContactFormik";
 
 export const App = () => {
  
