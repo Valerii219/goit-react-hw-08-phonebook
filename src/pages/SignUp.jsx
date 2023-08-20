@@ -1,22 +1,25 @@
 import SignUpForm from 'components/SignUpForm/SignUpForm';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import { signUpThunk } from 'store/auth/actions';
 
 
 const SignUp = () => {
  
   const dispatch = useDispatch();
-  const auth = body => {
-    dispatch(signUpThunk(body));
+  const auth = async body => {
+    try {
+      await dispatch(signUpThunk(body)).unwrap()
+      toast.success("Login successful!");
+    } catch (error) {
+      toast.error("Login or password is incorrect or the user with such email is already registered ");
+    }
   };
 
   return (
     <>
       <SignUpForm signUp={auth} />
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
-      
     </>
   );
 };

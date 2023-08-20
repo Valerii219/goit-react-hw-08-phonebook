@@ -1,4 +1,4 @@
-export const handeFulfiledSignUp = (state, {payload})=>{
+export const handeFulfiled = (state, {payload})=>{
     state.token = payload.token;
     state.profile = payload.user
 }

@@ -1,7 +1,7 @@
-import { logOutThunk, loginThunk, signUpThunk } from './actions';
+import { logOutThunk, loginThunk, refreshThunk, signUpThunk } from './actions';
 import {
   handeFulfiledLogOut,
-  handeFulfiledSignUp,
+  handeFulfiled,
   handleFulfilled,
   handlePending,
   handleRejected,
@@ -15,9 +15,10 @@ const authSlice = createSlice({
   reducers: { },
   extraReducers: builder => {
     builder
-      .addCase(signUpThunk.fulfilled, handeFulfiledSignUp)
-      .addCase(loginThunk.fulfilled, handeFulfiledSignUp)
+      .addCase(signUpThunk.fulfilled, handeFulfiled)
+      .addCase(loginThunk.fulfilled, handeFulfiled)
       .addCase(logOutThunk.fulfilled, handeFulfiledLogOut)
+      .addCase(refreshThunk.fulfilled, handeFulfiled)
 
       .addMatcher(({ type }) => type.endsWith('pending'), handlePending)
       .addMatcher(({ type }) => type.endsWith('fulfilled'), handleFulfilled)

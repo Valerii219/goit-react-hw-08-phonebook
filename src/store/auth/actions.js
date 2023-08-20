@@ -1,4 +1,4 @@
-import { logOut, login, signUp } from "services/auth";
+import { logOut, login, refresh, signUp } from "services/auth";
 
 const { createAsyncThunk } = require("@reduxjs/toolkit");
 
@@ -26,3 +26,13 @@ export const loginThunk = createAsyncThunk('.auth/login',async(body, {rejectWith
             return rejectWithValue(error.response.data)
         }
         })
+
+        export const refreshThunk = createAsyncThunk('.auth/current',async(_, {rejectWithValue}) =>{
+            try {
+                return  await refresh()
+            } catch (error) {
+                
+                return rejectWithValue('')
+            }
+            })
+            

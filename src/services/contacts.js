@@ -12,3 +12,4 @@ export const deleteContacts  = async (contactId) => {
     const {data} = await instanceForContacts.delete(`contacts/${contactId}`);
     return data; 
 }
+

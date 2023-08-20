@@ -9,6 +9,7 @@ import { ButtonBase } from '@mui/material';
 import home from '../../img/home.png';
 import log from '../../img/log.png';
 import logOut from '../../img/logOut.jpg';
+import { refresh } from 'services/auth';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ const Header = () => {
                 <img className={css.img} src={log} alt="Login" width='60' height='60' />
               )}
             </ButtonBase>
+            <button onClick={refresh}>refresh</button>
           </div>
         )}
       </div>
