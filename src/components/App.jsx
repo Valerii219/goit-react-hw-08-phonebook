@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { currentUser } from "store/auth/operations";
 import PrivateRoad from "../PrivateRoad/PrivateRoad";
 import PublicRoad from "../PublicRoad/PublicRoad";
+// import { patchContactsThunk } from "store/contactsSlice/actions";
 
 
 
@@ -20,6 +21,11 @@ export const App = () => {
  useEffect(() => {
 dispatch(currentUser())
  }, [dispatch])
+ 
+//  useEffect(() => {
+//   dispatch(patchContactsThunk())
+//  }, [dispatch])
+ 
  
   return (
     <div><ToastContainer autoClose={2300}/>

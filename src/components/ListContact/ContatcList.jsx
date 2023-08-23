@@ -23,9 +23,9 @@ dispatch(getAllContactsThunk()) };
   return (
     newFilteredContacts.length > 0 && (
       <ul>
-        {newFilteredContacts.map(({ name, id, phone }) => (
-          <li key={id} className={css.itemList}>
-            {name}: {phone}
+        {newFilteredContacts.map(({ name, id, number }) => (
+          <li key={id} id={id} className={css.itemList}>
+            {name}: {number}
             <button onClick={() => deleteContact(id)} className={css.btn}>
               Delete
             </button>

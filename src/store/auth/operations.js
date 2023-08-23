@@ -5,7 +5,7 @@ const { createAsyncThunk } = require("@reduxjs/toolkit");
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
- const token = {set(token)
+ export const token = {set(token)
     { axios.defaults.headers.common.Authorization = `Bearer ${token}`},
     unset(token){
         axios.defaults.headers.common.Authorization = "";
@@ -57,7 +57,6 @@ if(persToken === null){
 
 token.set(persToken);
     try {
-        
         const {data} = await axios.get('/users/current')
         return data
     } catch (error) {
