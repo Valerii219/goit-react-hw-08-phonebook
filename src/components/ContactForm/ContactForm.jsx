@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import css from "./ContactForm.module.css";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector, } from "react-redux";
-import { createContacts} from "store/contactsSlice/contactsSlice";
 import { createContactsThunk, getAllContactsThunk } from "store/contactsSlice/actions";
+
 
 
 const ContactForm =() =>{
@@ -11,6 +11,7 @@ const ContactForm =() =>{
   const dispatch = useDispatch();
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
+  
   
 
 useEffect(()=>{
@@ -44,8 +45,8 @@ useEffect(()=>{
           return ;
         }
       
-      dispatch(createContacts(newContact));
-      dispatch(createContactsThunk({name, phone})).then(()=>dispatch(getAllContactsThunk()))
+      
+      dispatch(createContactsThunk({name, phone}))
       setName('');
       setPhone('');
     }

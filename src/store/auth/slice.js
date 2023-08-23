@@ -1,28 +1,52 @@
-import { logOutThunk, loginThunk, refreshThunk, signUpThunk } from './actions';
 import {
-  handeFulfiledLogOut,
-  handeFulfiled,
-  handleFulfilled,
-  handlePending,
-  handleRejected,
-} from './handlers';
+  currentUser,
+  logOutThunk,
+  loginThunk,
+  registerThunk,
+} from './operations';
 import { initialState } from './initialState';
 import { createSlice } from '@reduxjs/toolkit';
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: { },
+  reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(signUpThunk.fulfilled, handeFulfiled)
-      .addCase(loginThunk.fulfilled, handeFulfiled)
-      .addCase(logOutThunk.fulfilled, handeFulfiledLogOut)
-      .addCase(refreshThunk.fulfilled, handeFulfiled)
-
-      .addMatcher(({ type }) => type.endsWith('pending'), handlePending)
-      .addMatcher(({ type }) => type.endsWith('fulfilled'), handleFulfilled)
-      .addMatcher(({ type }) => type.endsWith('rejected'), handleRejected);
+    .addCase(registerThunk.fulfilled, (state, action) => {
+      state.user = { ...action.payload.user };
+      state.token = action.payload.token;
+      state.isLoading = true;
+    })
+    .addCase(registerThunk.rejected, (state, action) => {
+      state.error = action.payload;
+    })
+    .addCase(loginThunk.fulfilled, (state, action) => {
+      state.user = { ...action.payload.user };
+      state.token = action.payload.token;
+      state.isLoading = true;
+    })
+    .addCase(loginThunk.rejected, (state, action) => {
+      state.error = action.payload;
+    })
+      .addCase(logOutThunk.fulfilled, state => {
+        state.user = { name: null, email: null };
+        state.isLoading = false;
+        state.token = null;
+      })
+      .addCase(currentUser.pending, (state, action) => {
+       
+        state.isLoading = false;
+      })
+      .addCase(currentUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoading = true;
+      })
+      .addCase(currentUser.rejected, (state, action) => {
+       
+        state.isLoading = false;
+      })
+      
   },
 });
 

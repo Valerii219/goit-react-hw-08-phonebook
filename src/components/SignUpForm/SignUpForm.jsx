@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import css from './SignUp.module.css';
 import { Button, FormControl, Input, InputLabel } from '@mui/material';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { registerThunk } from 'store/auth/operations';
 
 const SignUpForm = ({ signUp }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleChangeName = (e) => {
     setName(e.target.value);
@@ -27,6 +30,7 @@ const SignUpForm = ({ signUp }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(registerThunk({name, email, password}));
     if (!isNameValid || !isEmailValid || !isPasswordValid) {
       if (!isNameValid) {
         toast.error('Name must be 2 or more characters');
@@ -40,7 +44,10 @@ const SignUpForm = ({ signUp }) => {
       
       return;
     }
-    signUp({ name, email, password });
+    setName('');
+    setEmail('');
+    setPassword('');
+    // signUp({ name, email, password });
   };
 
   return (

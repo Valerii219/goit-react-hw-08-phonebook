@@ -1,6 +1,6 @@
  export const initialState = {
-    token:'',
-    profile:null,
+    token:null,
+    user:{name:null, email:null},
     isLoading:false,
     error:''
     

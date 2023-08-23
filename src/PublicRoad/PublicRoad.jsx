@@ -4,9 +4,9 @@ import { useSelector } from "react-redux"
 import { selectAuth } from "store/auth/selectors"
 
 
-const PublicGuards = ({
+const PublicRoad = ({
     children}) =>{
         const isAuth = useSelector(selectAuth)
-        return !isAuth ? children : <Navigate to='/'/>
+        return !isAuth ? children : <Navigate to='/login'/>
     }
-    export default PublicGuards;
+    export default PublicRoad

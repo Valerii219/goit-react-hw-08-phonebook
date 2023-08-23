@@ -1,10 +1,11 @@
 export const handeFulfiled = (state, {payload})=>{
     state.token = payload.token;
-    state.profile = payload.user
+    state.user = payload
+    
 }
 
 export const handlePending = (state) =>{
-    state.isLoading = true;
+    state.isLoading = false;
     state.error = ''
 }
 
@@ -12,6 +13,7 @@ export const handleFulfilled = (state) =>{
     state.isLoading = false
 
 }
+
 export const handleRejected = (state, {payload}) =>{
     state.isLoading = false
     state.error = payload.error
@@ -19,9 +21,9 @@ export const handleRejected = (state, {payload}) =>{
 
 
 
-export const handeFulfiledLogOut = (state, {payload})=>{
+export const handeFulfiledLogOut = (state, actions)=>{
     state.token=''
-    state.profile = null
-    state.isLoading = false
+    state.user = {name:null, email:null}
+    state.isLoading = true
     state.error = ''
 }

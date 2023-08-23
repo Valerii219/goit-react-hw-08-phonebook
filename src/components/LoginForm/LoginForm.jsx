@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import css from './LoginForm.module.css';
 import { Button, TextField } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { loginThunk } from 'store/auth/operations';
 
 const LoginForm = ({ login }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispatch = useDispatch();
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -16,10 +18,12 @@ const LoginForm = ({ login }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(loginThunk({ email, password}));
     if (email === '' || password === '') {
       return;
     }
-    login({ email, password });
+    setEmail('');
+    setPassword('');
   };
 
   const emailColor = email === '' ? 'secondary' : 'warning'; // Виправлена логіка для зміни кольору
