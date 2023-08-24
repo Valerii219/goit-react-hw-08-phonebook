@@ -10,6 +10,15 @@ const contactsSlice = createSlice({
   name: "contacts",
   initialState,
   reducers: {
+    createContacts:(state, {payload})=>({
+      ...state,
+      contacts: [...state.contacts, payload],
+    }),
+    deleteContacts:(state, actions)=>({
+      ...state,
+      contacts: actions.payload,
+    })
+  
   },
   extraReducers: builder => {
     builder
@@ -44,4 +53,4 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
-// export const { createContacts, deleteContacts } = contactsSlice.actions;
+export const { createContacts, deleteContacts } = contactsSlice.actions;

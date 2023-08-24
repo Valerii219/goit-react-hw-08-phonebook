@@ -3,20 +3,23 @@ import css from "./ContactForm.module.css";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector, } from "react-redux";
 import { createContactsThunk, getAllContactsThunk } from "store/contactsSlice/actions";
+import { createContacts } from "store/contactsSlice/contactsSlice";
+import { selectAuth } from "store/auth/selectors";
 
 
 
 const ContactForm =() =>{
   const contacts = useSelector(state => state.contacts);
+  const token = useSelector(selectAuth);
   const dispatch = useDispatch();
   const [name, setName] = useState('')
   const [number, setPhone] = useState('')
-  
+   
   
 
 useEffect(()=>{
-  dispatch(getAllContactsThunk())
-},[dispatch])
+  token && dispatch(getAllContactsThunk(token))
+},[dispatch, token])
 
   const handleChange = (e)=>{    
     setName ( e.target.value
@@ -46,7 +49,7 @@ useEffect(()=>{
           return ;
         }
       
-      
+        dispatch(createContacts(newContact));
       dispatch(createContactsThunk({name, number}));
       setName('');
       setPhone('');

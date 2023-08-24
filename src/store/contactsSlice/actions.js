@@ -1,11 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
-// import { token } from "store/auth/operations";
 
-export const getAllContactsThunk = createAsyncThunk('contacts/getContacts', async(_,thunkAPI) =>{
+
+
+export const getAllContactsThunk = createAsyncThunk('contacts/getContacts', async( token, thunkAPI) =>{
+  
   try {
-    const { data } = await axios.get('/contacts');
+    const { data } = await axios.get('/contacts', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

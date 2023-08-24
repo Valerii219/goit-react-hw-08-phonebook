@@ -10,7 +10,7 @@ const Navig = () => {
     <div className={css.login}>
           <Button sx={{
          mr:5,
-        }} variant="contained"   color="success" onClick={() => navigate('./register')}>SignIN</Button>
+        }} variant="contained"   color="success" onClick={() => navigate('./register')}>SignUp</Button>
           
           <ButtonBase variant="outlined" onClick={() => navigate('./login')}>
             <img
