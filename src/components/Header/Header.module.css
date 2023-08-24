@@ -1,29 +1,36 @@
-.header{
-min-width: 100%;
-background-color: rgb(36, 21, 148);
-padding-top: 24px;
-padding-bottom: 24px;
-border-bottom: solid 2px black ;
-border-radius: 0 0 4px 4px;
-margin-left: auto;
-margin-right: auto;
-display: flex;
-justify-content: space-between;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(11, 22, 176, 0.9); /* Легка прозорість фону */
+  backdrop-filter: blur(10px); /* Розмиття */
+  border-bottom: 1px solid #ccc;
 }
 .login{
   display: block;
- 
-  border-radius: 50%;
-  
+
 }
 
-.home{
-  margin-left: 20px;
+.home {
+  display: flex;
+  align-items: center;
 }
-.img{
+.img {
+  margin-right: 10px;
   border-radius: 50%;
 }
-.menu{
+.menu {
   display: flex;
-  margin-right: 20px;
+  align-items: center;
+  background-color: rgba(220, 220, 17, 0.9); 
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: blue;
 }
+.mail {
+  margin-right: 10px;
+  font-weight: bold;
+}
+

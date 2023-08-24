@@ -2,7 +2,7 @@
 import css from './Header.module.css';
 import { useNavigate} from 'react-router-dom';
 
-import {  ButtonBase } from '@mui/material';
+import {  Button, ButtonBase } from '@mui/material';
 import home from '../../img/home.png';
 
 
@@ -29,9 +29,9 @@ const Header = () => {
               height="60"
             />
           </ButtonBase>
-          <ButtonBase onClick={() => navigate('./contacts')}>
+          <Button variant="contained" color="success"  type="submit"   onClick={() => navigate('./contacts')}>
            contacts
-          </ButtonBase>
+          </Button>
           
         </div>
         {isLoading ?  <UserMenu /> : <Navig/>} 

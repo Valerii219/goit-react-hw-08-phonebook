@@ -2,23 +2,26 @@ import React, { useState } from 'react';
 import css from './LoginForm.module.css';
 import { Button, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { loginThunk } from 'store/auth/operations';
+import { loginThunk } from 'store/auth/operationsAuth';
+import { useNavigate } from 'react-router';
 
 const LoginForm = ({ login }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const handleChangeEmail = (e) => {
+  const navigate = useNavigate();
+  const handleChangeEmail = e => {
     setEmail(e.target.value);
   };
 
-  const handleChangePassword = (e) => {
+  const handleChangePassword = e => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    dispatch(loginThunk({ email, password}));
+    dispatch(loginThunk({ email, password }))
+    .then(() => navigate('/contacts'));
     if (email === '' || password === '') {
       return;
     }
@@ -26,17 +29,16 @@ const LoginForm = ({ login }) => {
     setPassword('');
   };
 
-  const emailColor = email === '' ? 'secondary' : 'warning'; // Виправлена логіка для зміни кольору
-// const passwordColor = password ===
+  const emailColor = email === '' ? 'secondary' : 'warning'; 
   return (
     <div>
       <form className={css.form} onSubmit={handleSubmit}>
         <TextField
           label="Email"
           variant="filled"
-          id='email'
+          id="email"
           type="email"
-          color={emailColor} // Використовуємо зміну кольору
+          color={emailColor} 
           onChange={handleChangeEmail}
           value={email}
           focused
@@ -45,16 +47,17 @@ const LoginForm = ({ login }) => {
         <TextField
           label="Password"
           variant="filled"
-          id='password'
+          id="password"
           type="password"
-          color='secondary' // Використовуємо той самий колір для обох полів
+          color="secondary" 
           onChange={handleChangePassword}
           value={password}
           focused
-          
-          required 
+          required
         />
-        <Button variant="contained" color="success" type='submit'>submit</Button>
+        <Button variant="contained" color="success" type="submit" >
+          submit
+        </Button>
       </form>
     </div>
   );
