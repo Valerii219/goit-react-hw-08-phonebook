@@ -4,6 +4,7 @@ import { Button, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'store/auth/operationsAuth';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const LoginForm = ({ login }) => {
   const [email, setEmail] = useState('');
@@ -20,8 +21,8 @@ const LoginForm = ({ login }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(loginThunk({ email, password }))
-    .then(() => navigate('/contacts'));
+    dispatch(loginThunk({ email, password })).unwrap()
+    .then(() => navigate('/contacts')).then(()=>toast.success('successful registration'))
     if (email === '' || password === '') {
       return;
     }

@@ -14,7 +14,7 @@ import Navig from 'components/Log and Registr/Navig';
 
 const Header = () => {
   const navigate = useNavigate();
-  const isLoading = useSelector(authSelectors.selectLoading);
+  const isLoged= useSelector(authSelectors.selectLogedIn);
  
   return (
     <header>
@@ -34,7 +34,7 @@ const Header = () => {
           </Button>
           
         </div>
-        {isLoading ?  <UserMenu /> : <Navig/>} 
+        {isLoged ?  <UserMenu /> : <Navig/>} 
        
           
        

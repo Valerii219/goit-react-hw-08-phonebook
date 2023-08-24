@@ -32,8 +32,8 @@ const SignUpForm = ({ signUp }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(registerThunk({ name, email, password }))
-    .then(() => navigate('/contacts'));
+    dispatch(registerThunk({ name, email, password })).unwrap()
+    .then(() => navigate('/contacts')).then(()=>toast.success('successful registration'))
     if (!isNameValid || !isEmailValid || !isPasswordValid) {
       if (!isNameValid) {
         toast.error('Name must be 2 or more characters');

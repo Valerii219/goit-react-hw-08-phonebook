@@ -16,7 +16,8 @@ export const authSlice = createSlice({
       .addCase(registerThunk.fulfilled, (state, action) => {
         state.user = { ...action.payload.user };
         state.token = action.payload.token;
-        state.isLoading = true;
+        state.isLoggedIn = true;
+        state.isLoading = false;
       })
       .addCase(registerThunk.rejected, (state, action) => {
         state.error = action.payload;
@@ -24,7 +25,8 @@ export const authSlice = createSlice({
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.user = { ...action.payload.user };
         state.token = action.payload.token;
-        state.isLoading = true;
+        state.isLoading = false;
+        state.isLoggedIn = true;
       })
       .addCase(loginThunk.rejected, (state, action) => {
         state.error = action.payload;
@@ -33,13 +35,16 @@ export const authSlice = createSlice({
         state.user = { name: null, email: null };
         state.isLoading = false;
         state.token = null;
+        state.isLoggedIn = false;
       })
       .addCase(currentUser.pending, (state, action) => {
         state.isLoading = false;
+        state.isLoggedIn = false;
       })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.isLoading = true;
+        state.isLoading = false;
+        state.isLoggedIn = false;
       })
       .addCase(currentUser.rejected, (state, action) => {
         state.isLoading = false;
