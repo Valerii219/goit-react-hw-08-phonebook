@@ -39,15 +39,16 @@ export const authSlice = createSlice({
       })
       .addCase(currentUser.pending, (state, action) => {
         state.isLoading = false;
-        state.isLoggedIn = false;
+        state.isLoggedIn = true;
       })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoading = false;
-        state.isLoggedIn = false;
+        state.isLoggedIn = true;
       })
       .addCase(currentUser.rejected, (state, action) => {
         state.isLoading = false;
+        state.isLoggedIn = false;
       });
   },
 });

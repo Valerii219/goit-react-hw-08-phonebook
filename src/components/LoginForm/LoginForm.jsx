@@ -23,6 +23,7 @@ const LoginForm = ({ login }) => {
     e.preventDefault();
     dispatch(loginThunk({ email, password })).unwrap()
     .then(() => navigate('/contacts')).then(()=>toast.success('successful registration'))
+    .catch(()=>toast.error('ddddd'))
     if (email === '' || password === '') {
       return;
     }
