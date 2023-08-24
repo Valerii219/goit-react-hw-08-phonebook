@@ -7,18 +7,20 @@ import { ToastContainer } from 'react-toastify';
 
 import { Route, Routes } from 'react-router';
 import ContactFormik from '../pages/ContactFormik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { currentUser } from 'store/auth/operationsAuth';
 import PrivateRoad from '../PrivateRoad/PrivateRoad';
 import PublicRoad from '../PublicRoad/PublicRoad';
+import { selectAuth } from 'store/auth/selectors';
 
 
 export const App = () => {
+  const token = useSelector(selectAuth)
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(currentUser());
-  }, [dispatch]);
+    token && dispatch(currentUser());
+  }, [dispatch, token]);
 
 
   return (
