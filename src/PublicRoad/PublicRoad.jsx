@@ -7,6 +7,6 @@ import { selectAuth } from "store/auth/selectors"
 const PublicRoad = ({
     children}) =>{
         const isAuth = useSelector(selectAuth)
-        return !isAuth ? children : <Navigate to='/login'/>
+        return !isAuth ? children : <Navigate to='/'/>
     }
     export default PublicRoad
